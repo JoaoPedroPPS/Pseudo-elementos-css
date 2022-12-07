@@ -1,0 +1,94 @@
+/* ::AFTER */
+.interesting-text::after {
+    content: "<- isso é interessante!";
+    color: green;
+}
+
+.tedious-text::after {
+    content: "<- TEDIOSO!";
+    color: red;
+}
+
+/* ::BEFORE */
+q::before {
+content: "«";
+color:green;
+}
+q::after {
+    content: "»";
+    color: red;
+}
+
+/* ::CUE */
+video {
+    width: 250px;
+
+}
+
+video::cue {
+    font-size: 1rem;
+    color: yellow;
+}
+
+/* ::FIRST-LETTER */
+
+.txtFirst::first-letter {
+    color: red;
+    font-size: 130%;
+}
+
+.txtSecond::first-letter {
+    color: blue;
+    font-size: 130%;
+}
+
+/* ::SELECTION E ::FIRST-LINE */
+.sel::first-line {
+    color: rgb(154, 250, 9);
+    text-transform: uppercase;
+ }
+
+.sel::selection {
+    color: rgb(8, 253, 69);
+    background-color: rgb(13, 14, 12);
+  }
+
+/* ::BACKDROP */
+#element:fullscreen::backdrop {
+    background: rgb(185, 9, 185);
+}
+button
+{
+    background-color: #ec169a;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* ::PLACEHOLDER */
+
+input::placeholder {
+    font-weight: 800;
+    opacity: .6;
+    color: blue;
+}
+
+/* ::MARKER */
+
+li::marker {
+    content: '°';
+    font-size: 1.4em;
+}
+
+/* ::SPELLING-ERROR */
+
+::spelling-error {
+    text-decoration: wavy red;
+}
+
+/* ::grammar-error */
+
+ ::grammar-error{
+    text-decoration: wavy #4285f4;
+  }
