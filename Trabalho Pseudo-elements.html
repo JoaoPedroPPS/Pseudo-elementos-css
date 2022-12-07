@@ -5,7 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Pseudo Elementos CSS</title>
+    <script>
+    customElements.define('person-details',
+  class extends HTMLElement {
+    constructor() {
+      super();
+
+      const template = document.getElementById('person-template');
+      const templateContent = template.content;
+
+      const shadowRoot = this.attachShadow({mode: 'open'});
+
+      const style = document.createElement('style');
+      style.textContent = `
+        div { padding: 10px; border: 1px solid gray; width: 200px; margin: 10px; }
+        h2 { margin: 0 0 10px; }
+        ul { margin: 0; }
+        p { margin: 10px 0; }
+        ::slotted(*) { color: gray; font-family: sans-serif; }
+      `;
+
+      shadowRoot.appendChild(style);
+      shadowRoot.appendChild(templateContent.cloneNode(true));
+  }
+});
+    </script>
 </head>
 <body>
 
@@ -100,6 +125,44 @@
     <BR></BR>
     <BR></BR>
     <BR></BR>
+    
+    <!-- SLOTTED -->
+    
+    <h1>::slotted </h1>
+
+<template id="person-template">
+  <div>
+    <h2>ID Card</h2>
+    <slot name="person-name">NAME </slot>
+    <ul>
+      <li><slot name="person-age">AGE</slot></li>
+      <li><slot name="person-occupation">OCCUPATION</slot></li>
+    </ul>
+  </div>
+</template>
+
+
+    <person-details>
+      <p slot="person-name">Letícia Vieira</p>
+      <span slot="person-age">29</span>
+      <span slot="person-occupation">Professora</span>
+    </person-details>
+
+    <person-details>
+      <p slot="person-name"> Cristiano Ronaldo</p>
+      <span slot="person-age">37</span>
+      <span slot="person-occupation">Jogador de FSutebol</span>
+    </person-details>
+    
+    
+    <BR></BR>
+    <BR></BR>
+    <BR></BR>
+    <BR></BR>
+    <BR></BR>
+    <BR></BR>
+    <BR></BR>
+
 
     <!-- ::PLACEHOLDER -->
     <h1>PLACEHOLDER</h1>
